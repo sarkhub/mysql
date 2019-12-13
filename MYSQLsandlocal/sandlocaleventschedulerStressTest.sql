@@ -1,5 +1,3 @@
--- 191210eventscheduler
-
 use sandlocal;
 
 
@@ -12,21 +10,21 @@ SET GLOBAL event_scheduler = ON;
 -- SET GLOBAL event_scheduler = OFF;
 
 
-CREATE EVENT test_event_02
+CREATE EVENT test_event_01
 ON SCHEDULE EVERY 1 MINUTE
 ON COMPLETION PRESERVE
 DO
-   CALL StressGenerateOrder_1(10000);
+   CALL StressGenerateOrder(2);
    
    
-ALTER EVENT test_event_02
+ALTER EVENT test_event_01
 ON SCHEDULE EVERY 1 MINUTE;
    
    
 -- totals
-select count(*) from order_1;   
+select count(*) from sandlocal.order;   
 -- 978878
    
    
 
-DROP EVENT  test_event_02;
+DROP EVENT  test_event_01;
