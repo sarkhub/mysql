@@ -14,7 +14,7 @@ CREATE EVENT test_event_01
 ON SCHEDULE EVERY 1 MINUTE
 ON COMPLETION PRESERVE
 DO
-   CALL StressGenerateOrder(2);
+   CALL StressGenerateOrder(50000);
    
    
 ALTER EVENT test_event_01
@@ -23,7 +23,11 @@ ON SCHEDULE EVERY 1 MINUTE;
    
 -- totals
 select count(*) from sandlocal.order;   
--- 978878
+
+select * from sandlocal.order LIMIT 10;   
+
+select * from sandlocal.order_status LIMIT 10;  
+
    
    
 
